@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import {
   Button,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
+  Dimensions,
 } from 'react-native';
 
 type Goal = string;
+const { width, height } = Dimensions.get('window');
 
 export default function App() {
   const [entererGoalText, setEnteredGoalText] = useState<string>('');
@@ -37,7 +41,17 @@ export default function App() {
       <View style={[styles.goalsContainer]}>
         <Text>List of Goals</Text>
         {courseGoals.map((goal, index) => (
-          <Text key={index}>{goal}</Text>
+          <View style={[styles.listOfGoals]} key={index}>
+            <Text>{goal}</Text>
+            <Pressable
+              style={styles.buttonOfX}
+              onPress={(onTouch) => {
+                console.log('Touched');
+              }}
+            >
+              <Text>X</Text>
+            </Pressable>
+          </View>
         ))}
       </View>
     </View>
@@ -70,5 +84,20 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 5,
+  },
+
+  listOfGoals: {
+    marginTop: '2%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  buttonOfX: {
+    marginLeft: '5%',
+    backgroundColor: '#00bfff',
+    borderRadius: 5,
+    paddingVertical: height * 0.01,
+    paddingHorizontal: width * 0.03,
+    alignItems: 'center',
   },
 });
