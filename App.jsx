@@ -8,18 +8,27 @@ import {
 
 export default function App() {
   return (
-    <View style={styles.appContainer}>
+    <View>
+      <View style={{ height: 50 }}></View>
       <View
-        style={styles.inputContainer}
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Hi bro"
-        />
-        <Button title="add Goal" />
-      </View>
-      <View>
-        <Text>List of Goals</Text>
+        <View style={styles.appContainer}>
+          <View style={[styles.firstColor, styles.boxSize]}>
+            <Text>1</Text>
+          </View>
+          <View
+            style={[styles.secondColor, styles.boxSize]}
+          >
+            <Text>2</Text>
+          </View>
+          <View style={[styles.thirdColor, styles.boxSize]}>
+            <Text>3</Text>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -27,19 +36,24 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 50,
-  },
-  inputContainer: {
+    // flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: '80%',
+    height: '30%',
+    justifyContent: 'space-around',
   },
-  TextInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%',
-    padding: '5%',
-    // padding: 8,
-    marginRight: '5%',
-    // marginRight: 9,
+  boxSize: {
+    // width: 100,
+  },
+  firstColor: {
+    flex: 3,
+    backgroundColor: 'red',
+  },
+  secondColor: {
+    flex: 2,
+    backgroundColor: 'green',
+  },
+  thirdColor: {
+    backgroundColor: 'blue',
   },
 });
