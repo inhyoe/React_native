@@ -10,10 +10,7 @@ interface MiddleProps {
 
 const { width, height } = Dimensions.get('window');
 
-const Middle: React.FC<MiddleProps> = ({
-  courseGoals,
-  onDeleteGoals,
-}) => {
+const Middle: React.FC<MiddleProps> = ({ courseGoals, onDeleteGoals }) => {
   console.log('in Middle', courseGoals);
   return (
     <View style={styles.goalsContainer}>
@@ -23,7 +20,7 @@ const Middle: React.FC<MiddleProps> = ({
           <Text>{goal}</Text>
           <Pressable
             style={styles.buttonOfX}
-            onPress={(onClick) => {
+            onPress={() => {
               onDeleteGoals(index);
             }}
           >

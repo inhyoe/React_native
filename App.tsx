@@ -28,13 +28,23 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       {/* Top 컴포넌트 사용 */}
-      <Top addGoalHandler={(goals) => addGoalHandler(goals, setCourseGoals)} />
+      {/* <Top addGoalHandler={(goals) => addGoalHandler(goals, setCourseGoals)} /> */}
       {/* Middle 컴포넌트 사용 */}
-
-      <Middle
+      {/* <Middle
         courseGoals={courseGoals}
         // onDeleteGoals={deleteCourseGoal}
         onDeleteGoals={(index) => deleteCourseGoal(index, setCourseGoals)}
+      /> */}
+      <Top
+        addGoalHandler={(newGoal) =>
+          setCourseGoals((prev) => [...prev, newGoal])
+        }
+      />
+      <Middle
+        courseGoals={courseGoals}
+        onDeleteGoals={(index) =>
+          setCourseGoals((prev) => prev.filter((_, i) => i !== index))
+        }
       />
     </View>
   );
