@@ -8,30 +8,13 @@ import {
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View>
       <View>
-        <Text>Hi there</Text>
+        <TextInput placeholder="Hi bro" />
       </View>
-      <Text style={styles.dummyText}>
-        Hello world
-      </Text>
-      <TextInput />
-      <Button title="Tap Me!" />
+      <View></View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  dummyText: {
-    margin: 12,
-    borderWidth: 2,
-    borderColor: 'blue',
-    padding: 12,
-  },
-});
+const styles = StyleSheet.create({});
