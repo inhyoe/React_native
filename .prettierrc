@@ -3,9 +3,7 @@
 
   "semi": true,
 
-  "printWidth": 70,
-
-  "tabWidth": 2,
+  "printWidth": 80,
 
   "useTabs": false,
 
