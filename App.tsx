@@ -7,16 +7,21 @@ import {
   View,
 } from 'react-native';
 
-export default function App() {
-  const [entererGoalText, setEnteredGoalText] = useState('');
-  
+type Goal = string;
 
-  function goalInputHandler(enteredText) {
+export default function App() {
+  const [entererGoalText, setEnteredGoalText] = useState<string>('');
+  const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
+
+  function goalInputHandler(enteredText: string): void {
     setEnteredGoalText(enteredText);
   }
 
-  function addGoalHandler() {
-    console.log(entererGoalText);
+  function addGoalHandler(): void {
+    setCourseGoals((currentCourseGoals) => [
+      ...courseGoals,
+      entererGoalText,
+    ]);
   }
 
   return (
@@ -31,7 +36,9 @@ export default function App() {
       </View>
       <View style={[styles.goalsContainer]}>
         <Text>List of Goals</Text>
-        <Text>{entererGoalText}</Text>
+        {courseGoals.map((goal, index) => (
+          <Text key={index}>{goal}</Text>
+        ))}
       </View>
     </View>
   );
