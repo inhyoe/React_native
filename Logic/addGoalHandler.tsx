@@ -5,3 +5,5 @@ export const addGoalHandler = (
   if (newGoal.trim().length === 0) return; // 빈 입력값 방지
   setCourseGoals((currentCourseGoals) => [...currentCourseGoals, newGoal]);
 };
+
+

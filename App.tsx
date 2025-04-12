@@ -11,40 +11,13 @@ export default function App() {
   console.log(Middle);
   const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
 
-  // 목표 추가 핸들러
-  // function addGoalHandler(newGoal: string): void {
-  //   if (newGoal.trim().length === 0) return; // 빈 입력값 방지
-  //   setCourseGoals((currentCourseGoals) => [...currentCourseGoals, newGoal]);
-  // }
-
-  // function deleteCourseGoalHandler(index: number): void {
-  //   setCourseGoals((currentCourseGoals) => {
-  //     const updatedCourseGoals = [...currentCourseGoals];
-  //     updatedCourseGoals.splice(index, 1);
-  //     return updatedCourseGoals;
-  //   });
-  // }
   console.log(courseGoals);
   return (
     <View style={styles.appContainer}>
-      {/* Top 컴포넌트 사용 */}
-      {/* <Top addGoalHandler={(goals) => addGoalHandler(goals, setCourseGoals)} /> */}
-      {/* Middle 컴포넌트 사용 */}
-      {/* <Middle
-        courseGoals={courseGoals}
-        // onDeleteGoals={deleteCourseGoal}
-        onDeleteGoals={(index) => deleteCourseGoal(index, setCourseGoals)}
-      /> */}
-      <Top
-        addGoalHandler={(newGoal) =>
-          setCourseGoals((prev) => [...prev, newGoal])
-        }
-      />
+      <Top addGoalHandler={(goals) => addGoalHandler(goals, setCourseGoals)} />
       <Middle
         courseGoals={courseGoals}
-        onDeleteGoals={(index) =>
-          setCourseGoals((prev) => prev.filter((_, i) => i !== index))
-        }
+        onDeleteGoals={(index) => deleteCourseGoal(index, setCourseGoals)}
       />
     </View>
   );
