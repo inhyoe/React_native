@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Button,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -35,10 +36,14 @@ export default function App() {
         <Button title="add Goal" onPress={addGoalHandler} />
       </View>
       <View style={[styles.goalsContainer]}>
-        <Text>List of Goals</Text>
-        {courseGoals.map((goal, index) => (
-          <Text key={index}>{goal}</Text>
-        ))}
+        <ScrollView>
+          <Text>List of Goals</Text>
+          {courseGoals.map((goal, index) => (
+            <Text style={styles.goalItem} key={index}>
+              {goal}
+            </Text>
+          ))}
+        </ScrollView>
       </View>
     </View>
   );
@@ -69,6 +74,14 @@ const styles = StyleSheet.create({
     marginRight: '5%',
   },
   goalsContainer: {
-    flex: 5,
+    flex: 4,
+  },
+
+  goalItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 10,
+    backgroundColor: '#5e0acc',
+    color: 'white',
   },
 });
