@@ -1,47 +1,17 @@
 import { useState } from 'react';
-import {
-  Button,
-  FlatList,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
-import GoalItems from './component/GoalItems';
-import GoalInput from './component/GoalInput';
-
-type Goal = string;
+import { StyleSheet, View } from 'react-native';
+import GoalItems from './component/GoalItemsComponent/GoalItems';
+import GoalInput from './component/GoalInputComponent/GoalInput';
+import { Goal } from './DTO/Type';
 
 export default function App() {
-  const [entererGoalText, setEnteredGoalText] = useState<string>('');
   const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
-
-  function goalInputHandler(enteredText: string): void {
-    setEnteredGoalText(enteredText);
-  }
-
-  function addGoalHandler(): void {
-    setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals,
-      entererGoalText,
-    ]);
-  }
-  function setResetCourseGoals(): void {
-    setCourseGoals([]);
-  }
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput
-        goalInputHandler={goalInputHandler}
-        addGoalHandler={addGoalHandler}
-      />
-      <GoalItems
-        courseGoals={courseGoals}
-        setResetCourseGoals={setResetCourseGoals}
-      />
+      <GoalInput setCourseGoals={setCourseGoals} />
+      <GoalItems courseGoals={courseGoals} setCourseGoals={setCourseGoals}
+        />
     </View>
   );
 }

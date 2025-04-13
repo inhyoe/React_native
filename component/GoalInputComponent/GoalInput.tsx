@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { TextInput, View, StyleSheet, Button } from 'react-native';
 
 interface GoalInputProps {
-  goalInputHandler: (text: string) => void;
-  addGoalHandler: () => void;
+  setCourseGoals: Dispatch<SetStateAction<string[]>>;
 }
 
-const GoalInput = ({ goalInputHandler, addGoalHandler }: GoalInputProps) => {
+const GoalInput = ({ setCourseGoals }: GoalInputProps) => {
+  const [entererGoalText, setEnteredGoalText] = useState<string>('');
+
+  function goalInputHandler(enteredText: string): void {
+    setEnteredGoalText(enteredText);
+  }
+
+  function addGoalHandler(): void {
+    setCourseGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      entererGoalText,
+    ]);
+    setEnteredGoalText(''); // 입력 필드 초기화
+  }
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.TextInput}
         placeholder="Hi bro"
         onChangeText={(i) => goalInputHandler(i)}
+        value={entererGoalText}
       />
       <Button title="add Goal" onPress={addGoalHandler} />
     </View>
