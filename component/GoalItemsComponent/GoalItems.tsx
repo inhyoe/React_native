@@ -16,16 +16,18 @@ const GoalItems = ({ courseGoals, setCourseGoals }: GoalItemsProps) => {
             data={courseGoals}
             renderItem={(itemData) => {
                return (
-                  <View
-                     style={styles.goalItem}
-                     // key={itemData.index}
+                  <Pressable
+                     android_ripple={{ color: '#330471' }}
+                     style={({ pressed }) => pressed && styles.pressedItem}
                   >
-                     <Text style={styles.goalText}>{itemData.item}</Text>
-                     <DeleteGoalItem
-                        itemIndex={itemData.index}
-                        setCourseGoals={setCourseGoals}
-                     ></DeleteGoalItem>
-                  </View>
+                     <View style={styles.goalItem}>
+                        <Text style={styles.goalText}>{itemData.item}</Text>
+                        <DeleteGoalItem
+                           itemIndex={itemData.index}
+                           setCourseGoals={setCourseGoals}
+                        />
+                     </View>
+                  </Pressable>
                );
             }}
          />
@@ -42,8 +44,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
    },
    goalItem: {
-      margin: 8,
-      padding: 8,
+      margin: 2,
+      padding: 3,
       borderRadius: 10,
       alignItems: 'center',
       color: 'white',
@@ -57,6 +59,10 @@ const styles = StyleSheet.create({
    },
    goalsContainer: {
       flex: 4,
+   },
+
+   pressedItem: {
+      opacity: 0.5,
    },
 });
 
