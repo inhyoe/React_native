@@ -1,5 +1,12 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { TextInput, View, StyleSheet, Button, Modal } from 'react-native';
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Button,
+  Modal,
+  Image,
+} from 'react-native';
 
 interface GoalInputProps {
   setCourseGoals: Dispatch<SetStateAction<string[]>>;
@@ -23,20 +30,33 @@ const GoalInput = ({ setCourseGoals, modalVisibleHandler }: GoalInputProps) => {
   }
 
   return (
-    <Modal visible={true} animationType="slide">
+    <Modal
+      visible={true}
+      animationType="slide"
+      transparent={false} // Modal의 배경을 불투명하게 설정
+    >
       <View style={styles.inputContainer}>
+        <Image
+          style={styles.image}
+          source={require('../../assets/images/goal.png')}
+        />
+
         <TextInput
-          style={styles.TextInput}
+          style={styles.textInputStyle}
           placeholder="Hi bro"
           onChangeText={(i) => goalInputHandler(i)}
           value={entererGoalText}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="add Goal" onPress={addGoalHandler} />
+            <Button title="add Goal" onPress={addGoalHandler} color="#957db5" />
           </View>
           <View style={styles.button}>
-            <Button title="Close Modal" onPress={modalVisibleHandler} />
+            <Button
+              title="Close Modal"
+              onPress={modalVisibleHandler}
+              color="#f31282"
+            />
           </View>
         </View>
       </View>
@@ -47,20 +67,24 @@ const GoalInput = ({ setCourseGoals, modalVisibleHandler }: GoalInputProps) => {
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    // flexDirection: 'row',
     padding: '5%',
-    justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'left', // 텍스트를 왼쪽으로 정렬 (기본값)
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    backgroundColor: '#29188e', // 배경색 추가
   },
-  TextInput: {
-    borderColor: '#cccccc',
-    borderWidth: 1,
+
+  textInputStyle: {
+    borderWidth: 3,
+    borderColor: '#e4cae2',
+    backgroundColor: '#e4d0ff',
+    borderRadius: 10,
+    borderStyle: 'solid',
     padding: 8,
     width: '100%',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
   },
   buttonContainer: {
     flexDirection: 'row',
