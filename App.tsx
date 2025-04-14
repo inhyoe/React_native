@@ -11,6 +11,7 @@ import GoalItems from './component/GoalItemsComponent/GoalItems';
 import GoalInput from './component/GoalInputComponent/GoalInput';
 import { Goal } from './DTO/Type';
 import { StatusBar } from 'expo-status-bar';
+import StartGameScreen from './screens/StartGameScreen';
 
 export default function App() {
   const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
@@ -26,20 +27,7 @@ export default function App() {
       {/* Fragment */}
       <StatusBar style="dark" />
       <SafeAreaView style={styles.appContainer}>
-        <View>
-          <Button
-            title="Add New Goal"
-            color="#5e0acc"
-            onPress={modalVisibleHandler}
-          />
-        </View>
-        {modalVisible && (
-          <GoalInput
-            modalVisibleHandler={modalVisibleHandler}
-            setCourseGoals={setCourseGoals}
-          />
-        )}
-        <GoalItems courseGoals={courseGoals} setCourseGoals={setCourseGoals} />
+        <StartGameScreen></StartGameScreen>
       </SafeAreaView>
     </>
   );
@@ -48,7 +36,9 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    paddingHorizontal: 16,
+    backgroundColor: '#fff',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     paddingTop: Platform.OS === 'android' ? RNStatusBar.currentHeight + 10 : 0,
   },
 });
