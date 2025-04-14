@@ -7,16 +7,23 @@ interface Props {}
 const StartGameScreen = ({}: Props) => {
   return (
     <View style={styles.inputContainer}>
+      {/* <View style={styles.row}> */}
       <TextInput
-        style={styles.numberInput}
+        style={[styles.numberInput]}
         maxLength={2}
         keyboardType="number-pad" // 숫자 전용 키패드
         autoCapitalize="none" // 자동 대문자 변환 비활성화
         autoCorrect={false} // 자동 수정 기능 비활성화
       />
-
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+      {/* </View> */}
+      <View style={styles.row}>
+        <View style={styles.flex1}>
+          <PrimaryButton>Reset</PrimaryButton>
+        </View>
+        <View style={styles.flex1}>
+          <PrimaryButton>Confirm</PrimaryButton>
+        </View>
+      </View>
     </View>
   );
 };
@@ -34,8 +41,8 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOpacity: 0.25,
     shadowColor: 'black',
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   numberInput: {
     height: 50,
@@ -59,10 +66,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    // 가로 방향으로 중앙 정렬 (좌우 중앙)
-    justifyContent: 'center',
-    // 세로 방향으로 중앙 정렬 (위아래 중앙)
-    alignItems: 'center',
+  },
+  flex1: {
+    flex: 1,
   },
 });
 
