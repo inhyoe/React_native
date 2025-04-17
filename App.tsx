@@ -7,27 +7,22 @@ import {
   Platform,
   StatusBar as RNStatusBar,
 } from 'react-native';
-import GoalItems from './component/GoalItemsComponent/GoalItems';
-import GoalInput from './component/GoalInputComponent/GoalInput';
-import { Goal } from './DTO/Type';
 import { StatusBar } from 'expo-status-bar';
 import StartGameScreen from './screens/StartGameScreen';
+import { LinearGradient } from 'expo-linear-gradient';
+// import { LinearGradient } from 'react-native-linear-gradient';
 
 export default function App() {
-  const [courseGoals, setCourseGoals] = useState<Goal[]>([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  // const insets = useSafeAreaInsets();
-
-  function modalVisibleHandler(): void {
-    setModalVisible(!modalVisible);
-  }
-
   return (
     <>
-      {/* Fragment */}
-      <StatusBar style="dark" />
       <SafeAreaView style={styles.appContainer}>
-        <StartGameScreen></StartGameScreen>
+        <StatusBar style="dark" />
+        <LinearGradient
+          colors={['#4e0329', '#ddb52f', '#192f6a']}
+          style={styles.rootScreen}
+        >
+          <StartGameScreen />
+        </LinearGradient>
       </SafeAreaView>
     </>
   );
@@ -40,5 +35,10 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // alignItems: 'center',
     paddingTop: Platform.OS === 'android' ? RNStatusBar.currentHeight + 10 : 0,
+  },
+
+  rootScreen: {
+    flex: 1,
+    // backgroundColor: '#ddb52b',
   },
 });
